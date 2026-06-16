@@ -1,2 +1,18 @@
+# Local virtual environments
 venv/
+.venv/
+env/
+ENV/
+
+# Python caching and compilation files
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Streamlit local configuration files
+.streamlit/
+
+# IDE specific settings (Optional but recommended)
+.vscode/
+.idea/
