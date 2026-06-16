@@ -8,7 +8,7 @@ st.title("🚀 The Apollo Engine Control Center")
 st.markdown("Interactive multi-sector FinTech, HealthTech, and Engineering optimization portal.")
 
 # Switch this URL to your live Render backend URL once deployed!
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = "https://apollo-engine-backend.onrender.com"
 
 # Create structural tabs for clean user navigation
 tab1, tab2, tab3 = st.tabs(["🏥 MediPay (HealthTech)", "⚡ WattWise (Energy)", "🌾 InsureCrop (AgriTech)"])
