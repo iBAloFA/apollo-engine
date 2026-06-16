@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import numpy as np
 
-router = APIRouter(prefix="/api/v1/medipay", tags=["MediPay"])
+router = APIRouter(prefix="/medipay", tags=["MediPay"])
 
 class BillPayload(BaseModel):
     total_bill: float

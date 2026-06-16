@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import numpy as np
 
-router = APIRouter(prefix="/api/v1/insurecrop", tags=["InsureCrop"])
+router = APIRouter(prefix="/insurecrop", tags=["InsureCrop"])
 
 class RiskPayload(BaseModel):
     crop_type: str

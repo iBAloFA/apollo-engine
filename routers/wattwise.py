@@ -4,7 +4,7 @@ from typing import List
 import pandas as pd
 import numpy as np
 
-router = APIRouter(prefix="/api/v1/wattwise", tags=["WattWise"])
+router = APIRouter(prefix="/wattwise", tags=["WattWise"])
 
 class HourlyConsumption(BaseModel):
     hour: int  # 0 to 23
@@ -43,6 +43,7 @@ def optimize_energy_costs(payload: EnergyPayload):
     
     # Identify the absolute peak hour of stress on the system
     peak_hour = int(df.loc[df['kwh_used'].idxmax()]['hour'])
+    hourly_breakdown = df[['hour', 'baseline_cost', 'optimized_cost']].to_dict(orient='records')
     
     return {
         "business_profile": payload.business_type,
@@ -52,5 +53,6 @@ def optimize_energy_costs(payload: EnergyPayload):
             "projected_savings_usd": round(float(savings), 2),
             "critical_peak_hour": peak_hour
         },
+        "hourly_breakdown": hourly_breakdown,
         "recommendation": f"Switch to solar storage infrastructure specifically during hour {peak_hour} to maximize margins."
     }

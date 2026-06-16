@@ -1,3 +1,5 @@
+import uvicorn
+import os
 from routers import medipay, wattwise, insurecrop
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,7 +27,10 @@ def read_root():
         "docs_url": "/docs"
     }
 
-app.include_router(medipay.router)
-app.include_router(wattwise.router)
-app.include_router(insurecrop.router)
+app.include_router(medipay.router, prefix="/api/v1")
+app.include_router(wattwise.router, prefix="/api/v1")
+app.include_router(insurecrop.router, prefix="/api/v1")
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
